@@ -1,32 +1,5 @@
-# _*_ coding: utf-8 _*_
-
 import xadmin
 from mybills.models import *
-from xadmin import views
-
-
-class BaseSetting(object):
-    """基本管理器配置"""
-
-    # **开启主题功能
-    enable_themes = True
-    use_bootswatch = True
-
-xadmin.site.register(views.BaseAdminView, BaseSetting)
-
-
-class GlobalSetting(object):
-    """全局配置"""
-
-    # **设置base_site.html的Title
-    site_title = 'Pings的账单系统'
-    # **设置base_site.html的Footer
-    site_footer = 'Pings'
-
-    # **菜单折叠
-    # menu_style = "accordion"
-
-xadmin.site.register(views.CommAdminView, GlobalSetting)
 
 
 @xadmin.sites.register(BasData)

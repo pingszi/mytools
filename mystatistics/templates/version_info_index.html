@@ -1,0 +1,44 @@
+{% extends base_template %}
+{% load i18n %}
+
+{% load xadmin_tags %}
+
+{% block extrastyle %}
+<style type="text/css">
+    .btn-toolbar{margin-top: 0;}
+    #content-block.full-content{margin-left: 0;}
+</style>
+{% endblock %}
+{% block bodyclass %}change-list{% endblock %}
+
+{% block nav_title %}{% if brand_icon %}<i class="{{brand_icon}}"></i> {% endif %}{{brand_name}}{% endblock %}
+
+{% block nav_toggles %}
+{% include "xadmin/includes/toggle_menu.html" %}
+{% endblock %}
+
+{% block nav_btns %}
+
+{% endblock nav_btns %}
+
+{% block content %}
+<form id="changelist-form" action="" method="post">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>版本</th><th>作者</th><th>日期</th><th>描述</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>V1.0</td>
+                <td>Pings</td>
+                <td>2018-06-13</td>
+                <td>
+                    1.我的账单，版本信息，消费统计
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+{% endblock %}

@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reversion',
 
+    'common.apps.CommonConfig',
     # **账单
     'mybills.apps.MybillsConfig',
+    # **统计
+    'mystatistics.apps.MystatisticsConfig',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mytools',
-        'HOST': '172.18.124.127',
+        'HOST': '112.74.169.154',
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': '123456'
@@ -138,13 +141,14 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'standard': {
-            'format': '%(levelname)s %(asctime)s %(message)s'
+            'format': '%(levelname)s %(asctime)s %(name)s %(funcName)s %(message)s'
         },
     },
     'handlers': {
         'console': {
-            'level': 'DEBUG' if DEBUG else 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
+            'formatter': 'standard',
         },
         'file': {
             'level': 'INFO',
@@ -154,14 +158,25 @@ LOGGING = {
         },
     },
     'loggers': {
-        'default': {
+        'django.request': {
             'handlers': ['console', 'file'],
-            'level': 'DEBUG' if DEBUG else 'INFO',
-            'propagate': False,
+            'level': 'DEBUG' if DEBUG else "INFO",
         },
         'django.db.backends': {
             'handlers': ['console', 'file'],
-            'level': 'DEBUG' if DEBUG else 'INFO',
+            'level': 'DEBUG' if DEBUG else "INFO",
+        },
+        'common': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG' if DEBUG else "INFO",
+        },
+        'mybills': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG' if DEBUG else "INFO",
+        },
+        'mystatistics': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG' if DEBUG else "INFO",
         },
     },
 }

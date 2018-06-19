@@ -15,8 +15,12 @@ Including another URLconf
 """
 import xadmin
 from django.urls import path
+from django.urls.conf import include
 xadmin.autodiscover()
 
 urlpatterns = [
     path('', xadmin.site.urls),
+
+    # **通用功能配置
+    path('common/', include('common.urls')),
 ]
