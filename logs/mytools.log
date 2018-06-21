@@ -300,3 +300,328 @@ Traceback (most recent call last):
   File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
     _mysql.connection.query(self, query)
 django.db.utils.OperationalError: (1055, "Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'mytools.ed.expense_date' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by")
+ERROR 2018-06-21 09:59:57,060 common connect Ö´ÐÐsql´íÎó......
+ERROR 2018-06-21 09:59:57,104 django.request handle_uncaught_exception Internal Server Error: /common/findall
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/java/source/Pings/mytools\common\views.py", line 28, in findall
+    return HttpResponse(json.dumps(dao.findall(sql), ensure_ascii=False, cls=JsonEncoder))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 71, in findall
+    return self.connect(lambda cursor: [dict(zip([col[0] for col in cursor.description], row))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 31, in connect
+    rst = func(cursor)
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 72, in <lambda>
+    for row in cursor.fetchall()] if cursor.execute(sql, args) > 0 else [])
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+ERROR 2018-06-21 09:59:58,309 common connect Ö´ÐÐsql´íÎó......
+ERROR 2018-06-21 09:59:58,309 django.request handle_uncaught_exception Internal Server Error: /common/findall
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/java/source/Pings/mytools\common\views.py", line 28, in findall
+    return HttpResponse(json.dumps(dao.findall(sql), ensure_ascii=False, cls=JsonEncoder))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 71, in findall
+    return self.connect(lambda cursor: [dict(zip([col[0] for col in cursor.description], row))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 31, in connect
+    rst = func(cursor)
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 72, in <lambda>
+    for row in cursor.fetchall()] if cursor.execute(sql, args) > 0 else [])
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+ERROR 2018-06-21 09:59:58,359 common connect Ö´ÐÐsql´íÎó......
+ERROR 2018-06-21 09:59:58,361 django.request handle_uncaught_exception Internal Server Error: /common/findall
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/java/source/Pings/mytools\common\views.py", line 28, in findall
+    return HttpResponse(json.dumps(dao.findall(sql), ensure_ascii=False, cls=JsonEncoder))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 71, in findall
+    return self.connect(lambda cursor: [dict(zip([col[0] for col in cursor.description], row))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 31, in connect
+    rst = func(cursor)
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 72, in <lambda>
+    for row in cursor.fetchall()] if cursor.execute(sql, args) > 0 else [])
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+ERROR 2018-06-21 09:59:59,520 common connect Ö´ÐÐsql´íÎó......
+ERROR 2018-06-21 09:59:59,520 django.request handle_uncaught_exception Internal Server Error: /common/findall
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/java/source/Pings/mytools\common\views.py", line 28, in findall
+    return HttpResponse(json.dumps(dao.findall(sql), ensure_ascii=False, cls=JsonEncoder))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 71, in findall
+    return self.connect(lambda cursor: [dict(zip([col[0] for col in cursor.description], row))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 31, in connect
+    rst = func(cursor)
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 72, in <lambda>
+    for row in cursor.fetchall()] if cursor.execute(sql, args) > 0 else [])
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+ERROR 2018-06-21 09:59:59,541 common connect Ö´ÐÐsql´íÎó......
+ERROR 2018-06-21 09:59:59,542 django.request handle_uncaught_exception Internal Server Error: /common/findall
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+_mysql_exceptions.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:/java/source/Pings/mytools\common\views.py", line 28, in findall
+    return HttpResponse(json.dumps(dao.findall(sql), ensure_ascii=False, cls=JsonEncoder))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 71, in findall
+    return self.connect(lambda cursor: [dict(zip([col[0] for col in cursor.description], row))
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 31, in connect
+    rst = func(cursor)
+  File "D:/java/source/Pings/mytools\common\util\commondao.py", line 72, in <lambda>
+    for row in cursor.fetchall()] if cursor.execute(sql, args) > 0 else [])
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 250, in execute
+    self.errorhandler(self, exc, value)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 50, in defaulterrorhandler
+    raise errorvalue
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 247, in execute
+    res = self._query(query)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 411, in _query
+    rowcount = self._do_query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\cursors.py", line 374, in _do_query
+    db.query(q)
+  File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")

@@ -31,6 +31,16 @@
             <div id="expense_details_month_type_statis" style="width: 100%;height: 330px"></div>
         </div>
     </div>
+    <div class="row clearfix">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>名称</th><th>类型</th><th>金额</th><th>消费日期</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
 <script src="/static/echarts/echarts.min.js"></script>
 <script src="/static/common/js/common.js"></script>
@@ -43,26 +53,61 @@
     //**初始化
     function init() {
         let params = {}
-        params.fields = "date_format(expense_date, '%Y-%m') name,d.name type,sum(value) value";
-        params.table = "bill_bus_expense_details ed left join bill_bas_data d on ed.type_id = d.id";
-        params.group = "date_format(expense_date, '%Y-%m'),d.name";
-        params.order = "date_format(expense_date, '%Y-%m')";
-        let pileBar = new PileBar("expense_details_month_statis", params, "type");
-        pileBar.show().then(baseData => {
-            params = {};
-            params.fields = "d.name,sum(ed.value) value";
-            params.table = "bill_bus_expense_details ed left join bill_bas_data d on ed.type_id = d.id";
-            params.where = `date_format(ed.expense_date, '%Y-%m') = '${baseData[0].name}'`;
-            params.group = "d.name";
-            let basePie = new BasePie("expense_details_month_type_statis", params);
-            basePie.show();
+        params.fields = "date_format(expense_date, '%Y-%m') name,sum(value) value";
+        params.table = "bill_bus_expense_details";
+        params.group = "date_format(expense_date, '%Y-%m')";
+        params.order = "date_format(expense_date, '%Y-%m') desc";
+        let bar = new BaseBar("expense_details_month_statis", params, "按月消费金额");
+        bar.setOption({series: [{ label: {normal: {show: true, position: 'inside'}}}]})
 
+        function initPage(month) {
+            //**初始化饼图
+            initPie(month);
+            //**初始化表格
+            initTable(month);
+        }
+        bar.show().then(baseData => {
+            initPage(baseData[0].name)
             //**鼠标移入
-            pileBar.getEChart().on('mouseover', json => {
-                params.where = `date_format(ed.expense_date, '%Y-%m') = '${json.name}'`;
-                basePie.setOption({series: [{name: json.name}]});
-                basePie.show();
-            });
+            bar.getEChart().on('mouseover', json => initPage(json.name));
+        });
+    }
+
+    //**初始化饼图
+    function initPie(month){
+        let params = {};
+        params.fields = "d.name,sum(ed.value) value";
+        params.table = "bill_bus_expense_details ed left join bill_bas_data d on ed.type_id = d.id";
+        params.where = `date_format(ed.expense_date, '%Y-%m') = '${month}'`;
+        params.group = "d.name";
+
+        let basePie = new BasePie("expense_details_month_type_statis", params);
+        basePie.setOption({series: [{name: month}]});
+        basePie.show();
+    }
+
+    //**初始化表格
+    function initTable(month){
+        let params = {};
+        params.fields = "ed.name,ed.value,date_format(ed.expense_date, '%m-%d') expense_date,d.name type";
+        params.table = "bill_bus_expense_details ed left join bill_bas_data d on ed.type_id = d.id";
+        params.where = `date_format(ed.expense_date, '%Y-%m') = '${month}'`;
+        params.order = "ed.expense_date desc";
+
+        Utils.getData(params).then(jsonArray => {
+            let tbody = jsonArray.map(json =>
+                `
+                    <tr>
+                        <td>${json.name}</td>
+                        <td>${json.type}</td>
+                        <td>${json.value}</td>
+                        <td>${json.expense_date}</td>
+                    </tr>
+                `
+            ).join("");
+
+            $("tbody").empty();
+            $("tbody").append(tbody);
         });
     }
 </script>
