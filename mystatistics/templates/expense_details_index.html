@@ -52,7 +52,7 @@
 
     //**初始化
     function init() {
-        let params = {}
+        let params = {};
         params.fields = "date_format(expense_date, '%Y-%m') name,sum(value) value";
         params.table = "bill_bus_expense_details";
         params.group = "date_format(expense_date, '%Y-%m')";
@@ -67,7 +67,7 @@
             initTable(month);
         }
         bar.show().then(baseData => {
-            initPage(baseData[0].name)
+            initPage(baseData[0].name);
             //**鼠标移入
             bar.getEChart().on('mouseover', json => initPage(json.name));
         });

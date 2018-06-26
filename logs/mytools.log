@@ -625,3 +625,4 @@ Traceback (most recent call last):
   File "D:\python\Anaconda3\envs\aiqa2\lib\site-packages\MySQLdb\connections.py", line 277, in query
     _mysql.connection.query(self, query)
 django.db.utils.OperationalError: (1054, "Unknown column 'e.expense_date' in 'field list'")
+WARNING 2018-06-26 10:26:33,297 django.request get_response Not Found: /favicon.ico
